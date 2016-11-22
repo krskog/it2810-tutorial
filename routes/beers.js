@@ -45,10 +45,10 @@ router.route('/:id')
 			if (err) res.status(500).send(err);
 
 			let { name, brewery, size, alcoholic } = req.body
-			beer.name 		= name
-			beer.brewery 	= brewery
-			beer.size		= size
-			beer.alcoholic  = alcoholic
+			beer.name 		= name 		|| beer.name
+			beer.brewery 	= brewery 	|| beer.brewery
+			beer.size		= size 		|| beer.size
+			beer.alcoholic  = alcoholic || beer.alcoholic
 
 			beer.save((err) => {
 				if (err) res.status(500).send(err);
