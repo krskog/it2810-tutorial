@@ -43,14 +43,12 @@ router.route('/:id')
 		let beerId = req.params.id
 		Beer.findById(beerId, (err, beer) => {
 			if (err) res.status(500).send(err);
+
 			let { name, brewery, size, alcoholic } = req.body
-			let newBeer = {
-				id: beer.id,
-				name: name,
-				brewery: brewery,
-				size: size,
-				alcoholic: alcoholic
-			}
+			beer.name 		= name
+			beer.brewery 	= brewery
+			beer.size		= size
+			beer.alcoholic  = alcoholic
 
 			beer.save((err) => {
 				if (err) res.status(500).send(err);
